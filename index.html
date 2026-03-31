@@ -1256,18 +1256,24 @@
             document.getElementById('moodResponse').textContent = moodResponses[mood];
         }
 
-        // Utensil Song Player
+        // Utensil Song Player - use GitHub Pages URL (same domain, no CORS issues)
         let utensilAudio = null;
 
         function playUtensilSong() {
             const btn = document.getElementById('utensilBtn');
 
-            // Create audio on first click with GitHub raw URL (original working file)
+            // Create audio on first click with GitHub Pages URL
             if (!utensilAudio) {
-                utensilAudio = new Audio('https://raw.githubusercontent.com/zmabraham/abraham-pesach-hotel/main/assets/fridge-song.mp3');
+                utensilAudio = new Audio('./assets/fridge-song.mp3');
+                utensilAudio.crossOrigin = "anonymous";
+                utensilAudio.preload = "auto";
                 utensilAudio.onended = function() {
                     btn.classList.remove('playing');
                     btn.innerHTML = '🍴 Utensil Fell?';
+                };
+                utensilAudio.onerror = function() {
+                    console.error('Audio load error');
+                    btn.innerHTML = '❌ Load Error';
                 };
             }
 
@@ -1279,10 +1285,10 @@
                     btn.innerHTML = '🎶 On Top of the Fridge!';
                 }).catch(error => {
                     console.error('Playback failed:', error);
-                    btn.innerHTML = '❌ Error';
+                    btn.innerHTML = '❌ Error: ' + error.name;
                     setTimeout(() => {
                         btn.innerHTML = '🍴 Utensil Fell?';
-                    }, 1500);
+                    }, 2000);
                 });
             } else {
                 utensilAudio.pause();
