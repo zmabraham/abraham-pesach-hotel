@@ -1378,39 +1378,36 @@
         }
 
         // Utensil Song Player
+        let utensilAudio = null;
+
         function playUtensilSong() {
-            const audio = document.getElementById('utensilAudio');
             const btn = document.getElementById('utensilBtn');
 
-            // Load audio if not loaded
-            if (audio.readyState === 0) {
-                audio.load();
-            }
-
-            // Toggle play/pause
-            if (audio.paused) {
-                audio.currentTime = 0;
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        btn.classList.add('playing');
-                        btn.innerHTML = '🎶 On Top of the Fridge!';
-                    }).catch(error => {
-                        console.error('Playback failed:', error);
-                        btn.innerHTML = '❌ Tap Again';
-                        setTimeout(() => {
-                            btn.innerHTML = '🍴 Utensil Fell?';
-                        }, 1000);
-                    });
-                }
-
-                audio.onended = function() {
+            // Create audio on first click
+            if (!utensilAudio) {
+                utensilAudio = new Audio('assets/fridge-song.mp3');
+                utensilAudio.onended = function() {
                     btn.classList.remove('playing');
                     btn.innerHTML = '🍴 Utensil Fell?';
                 };
+            }
+
+            // Toggle play/pause
+            if (utensilAudio.paused) {
+                utensilAudio.currentTime = 0;
+                utensilAudio.play().then(() => {
+                    btn.classList.add('playing');
+                    btn.innerHTML = '🎶 On Top of the Fridge!';
+                }).catch(error => {
+                    console.error('Playback failed:', error);
+                    btn.innerHTML = '❌ Error';
+                    setTimeout(() => {
+                        btn.innerHTML = '🍴 Utensil Fell?';
+                    }, 1500);
+                });
             } else {
-                audio.pause();
-                audio.currentTime = 0;
+                utensilAudio.pause();
+                utensilAudio.currentTime = 0;
                 btn.classList.remove('playing');
                 btn.innerHTML = '🍴 Utensil Fell?';
             }
