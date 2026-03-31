@@ -116,11 +116,11 @@
             box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
         }
 
-        /* Hero Section */
+        /* Hero Section - Luxury Hotel Style */
         .hero {
             position: relative;
-            min-height: 85vh;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            height: 100vh;
+            min-height: 700px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -128,53 +128,123 @@
             text-align: center;
             color: var(--white);
             padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        /* Background Image with Parallax Effect */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -2;
+        }
+
+        /* Elegant Dark Overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(30, 41, 59, 0.85) 0%,
+                rgba(30, 41, 59, 0.7) 50%,
+                rgba(201, 169, 97, 0.4) 100%
+            );
+            z-index: -1;
         }
 
         .hero-logo {
-            max-width: 80vh;
+            max-width: 300px;
             width: 100%;
             height: auto;
-            max-height: 55vh;
             object-fit: contain;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 10px 40px rgba(201, 169, 97, 0.3));
-            animation: fadeIn 1s ease-in;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+            animation: heroFadeIn 1.2s ease-out;
         }
 
-        @keyframes fadeIn {
+        @keyframes heroFadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.95);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: translateY(0);
             }
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
             color: var(--gold);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .hero .tagline {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             font-weight: 300;
-            opacity: 0.9;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold-light);
         }
 
         .hero .subtitle {
-            font-size: 1rem;
-            margin-bottom: 30px;
-            opacity: 0.8;
-            line-height: 1.6;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Decorative Line */
+        .hero-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 30px auto;
+        }
+
+        /* CTA Buttons Container */
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease-out 0.5s both;
         }
 
         .cta-button {
@@ -185,14 +255,70 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
             border: 2px solid var(--gold);
+            box-shadow: 0 8px 30px rgba(201, 169, 97, 0.3);
         }
 
         .cta-button:hover {
             background: transparent;
             color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 169, 97, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator .arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
 
         .section {
@@ -698,25 +824,41 @@
             }
 
             .hero {
-                padding: 30px 20px;
-                min-height: 75vh;
+                padding: 100px 20px 60px;
+                min-height: 90vh;
             }
 
             .hero-logo {
-                max-height: 40vh;
-                margin-bottom: 20px;
+                max-width: 200px;
+                margin-bottom: 25px;
             }
 
             .hero h2 {
                 font-size: 2rem;
+                letter-spacing: 2px;
             }
 
             .hero .tagline {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                letter-spacing: 4px;
             }
 
             .hero .subtitle {
-                font-size: 0.95rem;
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 0.9rem;
+            }
+
+            .scroll-indicator {
+                display: none;
             }
 
             .section {
@@ -759,13 +901,22 @@
     <section class="hero">
         <img src="assets/hotel-image.png" alt="Abraham Pesach Hotel" class="hero-logo">
         <div class="hero-content">
-            <h2>Welcome to Our Family Retreat!</h2>
-            <p class="tagline">Pesach, take two.</p>
+            <h2>Abraham Pesach Hotel</h2>
+            <div class="hero-divider"></div>
+            <p class="tagline">Pesach, Take Two</p>
             <p class="subtitle">
-                Concierge Leah and the management team are thrilled to have you here.
-                Experience an unforgettable Pesach 5786 with five-star service in a warm, family atmosphere.
+                An unforgettable family retreat in the heart of Brooklyn.
+                Experience five-star service, gourmet cuisine, and warm hospitality
+                for Pesach 5786.
             </p>
-            <a href="#contact" class="cta-button">Join Our WhatsApp Group</a>
+            <div class="hero-cta">
+                <a href="#contact" class="cta-button">Reserve Your Space</a>
+                <a href="#schedule" class="cta-button secondary">View Schedule</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="arrow"></div>
         </div>
     </section>
 
