@@ -692,6 +692,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .maror-modal.active {
@@ -704,9 +705,26 @@
             border-radius: 20px;
             padding: 40px;
             max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
             text-align: center;
             color: white;
             animation: modalPop 0.3s ease-out;
+        }
+
+        /* Custom scrollbar for modal */
+        .maror-modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .maror-modal-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .maror-modal-content::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border-radius: 4px;
         }
 
         @keyframes modalPop {
@@ -1055,21 +1073,60 @@
             }
 
             .maror-modal-content {
-                padding: 25px;
-                margin: 20px;
+                padding: 20px;
+                margin: 10px;
+                max-height: 80vh;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .maror-modal-content .warning-emoji {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
             }
 
             .maror-modal-content h2 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+
+            .maror-modal-content .side-effects {
+                padding: 15px;
+                margin: 15px 0;
+                flex-shrink: 0;
+            }
+
+            .maror-modal-content .side-effects h4 {
+                font-size: 0.9rem;
+            }
+
+            .maror-modal-content .side-effects li {
+                font-size: 0.85rem;
+                padding: 6px 0;
+                padding-left: 22px;
+            }
+
+            .maror-modal-content .side-effects li:before {
+                font-size: 0.8rem;
             }
 
             .maror-modal-content .buttons {
                 flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+                flex-shrink: 0;
+                position: sticky;
+                bottom: 0;
+                background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+                padding-top: 10px;
             }
 
             .maror-modal-content .btn-confirm,
             .maror-modal-content .btn-cancel {
                 width: 100%;
+                padding: 12px 20px;
+                font-size: 0.9rem;
             }
         }
     </style>
