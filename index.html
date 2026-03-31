@@ -480,90 +480,6 @@
             box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
         }
 
-        .maror-emergency {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: #dc2626;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-            transition: all 0.3s;
-            z-index: 999;
-            border: 2px solid #ef4444;
-        }
-
-        .maror-emergency:hover {
-            transform: scale(1.05);
-            background: #b91c1c;
-            box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
-        }
-
-        .maror-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .maror-modal.active {
-            display: flex;
-        }
-
-        .maror-modal-content {
-            background: #1a1a2e;
-            border: 2px solid #dc2626;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 400px;
-            text-align: center;
-            animation: marorShake 0.5s ease-in-out;
-        }
-
-        @keyframes marorShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-
-        .maror-modal-content h3 {
-            color: #dc2626;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .maror-modal-content p {
-            color: #e4e4e7;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .maror-modal-close {
-            background: #334155;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .maror-modal-close:hover {
-            background: #475569;
-        }
-
         /* Utensil Button */
         .utensil-emergency {
             position: fixed;
@@ -1229,28 +1145,9 @@
         <p>Pesach, take two.</p>
     </footer>
 
-    <!-- Emergency Maror Button -->
-    <div class="maror-emergency" onclick="showMarorWarning()">
-        🚨 EMERGENCY MAROR
-    </div>
-
     <!-- Utensil Emergency Button -->
     <div class="utensil-emergency" id="utensilBtn" onclick="playUtensilSong()">
         🍴 Utensil Fell?
-    </div>
-
-    <!-- Maror Warning Modal -->
-    <div class="maror-modal" id="marorModal" onclick="closeMarorModal(event)">
-        <div class="maror-modal-content" onclick="event.stopPropagation()">
-            <h3>⚠️ ARE YOU SURE?</h3>
-            <p>This is <strong>not</strong> a drill.</p>
-            <p>Maror consumption causes:<br>
-            💧 Immediate watering of eyes<br>
-            🔥 Regrettable decisions<br>
-            😢 Questioning life choices</p>
-            <p><em>Management is not responsible for emotional distress.</em></p>
-            <button class="maror-modal-close" onclick="closeMarorModal()">I Changed My Mind</button>
-        </div>
     </div>
 
     <script>
@@ -1267,18 +1164,6 @@
                 }
             });
         });
-
-        // Maror Emergency Modal
-        function showMarorWarning() {
-            document.getElementById('marorModal').classList.add('active');
-        }
-
-        function closeMarorModal(event) {
-            if (event && event.target !== document.getElementById('marorModal') && !event.target.classList.contains('maror-modal-close')) {
-                return;
-            }
-            document.getElementById('marorModal').classList.remove('active');
-        }
 
         // Seder Countdown Timer
         function updateCountdown() {
