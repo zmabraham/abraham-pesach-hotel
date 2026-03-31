@@ -564,6 +564,168 @@
             background: #475569;
         }
 
+        /* Interactive Elements Section */
+        .interactive-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 60px 20px;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .interactive-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .interactive-card h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Seder Countdown */
+        .countdown-timer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            background: rgba(201, 169, 97, 0.1);
+            padding: 15px 10px;
+            border-radius: 12px;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            color: #a1a1aa;
+            text-transform: uppercase;
+        }
+
+        /* Matzah Meter */
+        .matzah-meter-container {
+            margin-top: 20px;
+        }
+
+        .matzah-meter-label {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .matzah-meter-bar {
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .matzah-meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
+            transition: width 0.3s;
+            border-radius: 15px;
+        }
+
+        .matzah-meter-status {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .matzah-meter-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .meter-btn {
+            background: rgba(201, 169, 97, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .meter-btn:hover {
+            background: rgba(201, 169, 97, 0.4);
+        }
+
+        /* Mood Selector */
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .mood-btn {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .mood-btn:hover {
+            border-color: var(--gold);
+            background: rgba(201, 169, 97, 0.1);
+        }
+
+        .mood-btn.active {
+            border-color: var(--gold);
+            background: rgba(201, 169, 97, 0.2);
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .mood-text {
+            font-size: 0.8rem;
+            color: #a1a1aa;
+        }
+
+        .mood-response {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(201, 169, 97, 0.1);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: var(--gold);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -724,6 +886,80 @@
                     <h4>Shabbos Candle Lighting</h4>
                     <div class="time">7:05 PM</div>
                     <div class="date">Friday, April 3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="interactive-section">
+        <h2 class="section-title" style="color: var(--gold);">Interactive Fun</h2>
+        <p style="text-align: center; color: #a1a1aa; margin-bottom: 40px;">Get ready for Pesach with these interactive features!</p>
+
+        <div class="interactive-grid">
+            <!-- Seder Countdown -->
+            <div class="interactive-card">
+                <h3>⏳ Seder Countdown</h3>
+                <p style="color: #a1a1aa; font-size: 0.9rem;">Time until first Seder:</p>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">--</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">--</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">--</div>
+                        <div class="countdown-label">Mins</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">--</div>
+                        <div class="countdown-label">Secs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matzah Meter -->
+            <div class="interactive-card">
+                <h3>🫓 Matzah Tolerance Meter</h3>
+                <div class="matzah-meter-container">
+                    <div class="matzah-meter-label">Current Tolerance Level:</div>
+                    <div class="matzah-meter-bar" onclick="adjustMatzahMeter(event)">
+                        <div class="matzah-meter-fill" id="matzahFill" style="width: 50%;"></div>
+                    </div>
+                    <div class="matzah-meter-status" id="matzahStatus">[▓▓▓▓▓░░░░░░] 50% - Feeling Crunchy</div>
+                    <div class="matzah-meter-buttons">
+                        <button class="meter-btn" onclick="changeMatzahLevel(-10)">- Less</button>
+                        <button class="meter-btn" onclick="changeMatzahLevel(10)">+ More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mood Selector -->
+            <div class="interactive-card">
+                <h3>😊 Current Pesach Mood</h3>
+                <div class="mood-grid">
+                    <button class="mood-btn" onclick="selectMood(this, 'exhausted')">
+                        <span class="mood-emoji">😴</span>
+                        <span class="mood-text">Exhausted from cleaning</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood(this, 'excited')">
+                        <span class="mood-emoji">🙏</span>
+                        <span class="mood-text">Excited for Seder</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood(this, 'panicking')">
+                        <span class="mood-emoji">😰</span>
+                        <span class="mood-text">Panicking (last-minute)</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood(this, 'ready')">
+                        <span class="mood-emoji">🍷</span>
+                        <span class="mood-text">Ready for 4 cups</span>
+                    </button>
+                </div>
+                <div class="mood-response" id="moodResponse">
+                    Select your mood above 👆
                 </div>
             </div>
         </div>
@@ -908,6 +1144,98 @@
                 return;
             }
             document.getElementById('marorModal').classList.remove('active');
+        }
+
+        // Seder Countdown Timer
+        function updateCountdown() {
+            // First Seder: April 1, 2026 at 7:03 PM
+            const sederDate = new Date('2026-04-01T19:03:00-04:00');
+            const now = new Date();
+            const diff = sederDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '🎉';
+                document.getElementById('hours').textContent = 'CHAG';
+                document.getElementById('minutes').textContent = 'SAME';
+                document.getElementById('seconds').textContent = 'ACH!';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Matzah Tolerance Meter
+        let matzahLevel = 50;
+
+        function updateMatzahMeter() {
+            const fill = document.getElementById('matzahFill');
+            const status = document.getElementById('matzahStatus');
+            fill.style.width = matzahLevel + '%';
+
+            const filled = Math.floor(matzahLevel / 10);
+            const empty = 10 - filled;
+            const bar = '[' + '▓'.repeat(filled) + '░'.repeat(empty) + ']';
+
+            let label, color;
+            if (matzahLevel <= 20) {
+                label = 'Fresh & Ready';
+                color = '#22c55e';
+            } else if (matzahLevel <= 40) {
+                label = 'Feeling Light';
+                color = '#84cc16';
+            } else if (matzahLevel <= 60) {
+                label = 'Feeling Crunchy';
+                color = '#eab308';
+            } else if (matzahLevel <= 80) {
+                label = 'Matzah Coma Approaching';
+                color = '#f97316';
+            } else {
+                label = 'SEND HELP (AND SOUP)';
+                color = '#ef4444';
+            }
+
+            status.textContent = `${bar} ${matzahLevel}% - ${label}`;
+            status.style.color = color;
+        }
+
+        function changeMatzahLevel(delta) {
+            matzahLevel = Math.max(0, Math.min(100, matzahLevel + delta));
+            updateMatzahMeter();
+        }
+
+        function adjustMatzahMeter(event) {
+            const rect = event.target.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            matzahLevel = Math.round((clickX / rect.width) * 100);
+            updateMatzahMeter();
+        }
+
+        // Mood Selector
+        const moodResponses = {
+            exhausted: "😴 We feel you. Take a break, have some matzah... wait, never mind.",
+            excited: "🙏 That's the spirit! The Seder is going to be amazing!",
+            panicking: "😰 Deep breaths. We've all been there. Start with 'just one more room'...",
+            ready: "🍷 Now THAT'S what we're talking about! L'chaim!"
+        };
+
+        function selectMood(button, mood) {
+            // Remove active class from all mood buttons
+            document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            // Update response
+            document.getElementById('moodResponse').textContent = moodResponses[mood];
         }
     </script>
 </body>
