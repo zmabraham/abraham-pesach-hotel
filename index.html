@@ -1382,11 +1382,27 @@
             const audio = document.getElementById('utensilAudio');
             const btn = document.getElementById('utensilBtn');
 
+            // Load audio if not loaded
+            if (audio.readyState === 0) {
+                audio.load();
+            }
+
+            // Toggle play/pause
             if (audio.paused) {
                 audio.currentTime = 0;
-                audio.play();
-                btn.classList.add('playing');
-                btn.innerHTML = '🎶 On Top of the Fridge!';
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        btn.classList.add('playing');
+                        btn.innerHTML = '🎶 On Top of the Fridge!';
+                    }).catch(error => {
+                        console.error('Playback failed:', error);
+                        btn.innerHTML = '❌ Tap Again';
+                        setTimeout(() => {
+                            btn.innerHTML = '🍴 Utensil Fell?';
+                        }, 1000);
+                    });
+                }
 
                 audio.onended = function() {
                     btn.classList.remove('playing');
