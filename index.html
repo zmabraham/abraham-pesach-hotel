@@ -1262,9 +1262,9 @@
         function playUtensilSong() {
             const btn = document.getElementById('utensilBtn');
 
-            // Create audio on first click with GitHub raw URL
+            // Create audio on first click with Google Drive direct URL
             if (!utensilAudio) {
-                utensilAudio = new Audio('https://raw.githubusercontent.com/zmabraham/abraham-pesach-hotel/main/assets/fridge-song.mp3');
+                utensilAudio = new Audio('https://drive.google.com/uc?export=download&id=116fmh1BypULZAE8_T-iH5YLlp7SOGXja');
                 utensilAudio.onended = function() {
                     btn.classList.remove('playing');
                     btn.innerHTML = '🍴 Utensil Fell?';
