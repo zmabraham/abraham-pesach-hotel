@@ -1383,9 +1383,9 @@
         function playUtensilSong() {
             const btn = document.getElementById('utensilBtn');
 
-            // Create audio on first click
+            // Create audio on first click with full URL
             if (!utensilAudio) {
-                utensilAudio = new Audio('assets/fridge-song.mp3');
+                utensilAudio = new Audio('https://zmabraham.github.io/abraham-pesach-hotel/assets/fridge-song.mp3');
                 utensilAudio.onended = function() {
                     btn.classList.remove('playing');
                     btn.innerHTML = '🍴 Utensil Fell?';
