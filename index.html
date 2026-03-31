@@ -644,6 +644,168 @@
             50% { box-shadow: 0 4px 25px rgba(5, 150, 105, 0.6); }
         }
 
+        /* Emergency Maror Button */
+        .maror-emergency {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            transition: all 0.3s;
+            z-index: 998;
+            border: 2px solid #f87171;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .maror-emergency:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 38, 38, 0.5);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) scale(1.05); }
+            25% { transform: translateX(-5px) scale(1.05); }
+            75% { transform: translateX(5px) scale(1.05); }
+        }
+
+        /* Maror Modal */
+        .maror-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .maror-modal.active {
+            display: flex;
+        }
+
+        .maror-modal-content {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 3px solid #dc2626;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            color: white;
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .maror-modal-content h2 {
+            color: #dc2626;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .maror-modal-content .warning-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: shake 0.5s ease-in-out infinite;
+        }
+
+        .maror-modal-content .side-effects {
+            text-align: left;
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .maror-modal-content .side-effects h4 {
+            color: #f87171;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .maror-modal-content .side-effects ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .maror-modal-content .side-effects li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .maror-modal-content .side-effects li:before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+
+        .maror-modal-content .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .maror-modal-content .btn-confirm {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            border: 2px solid #f87171;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .maror-modal-content .btn-confirm:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .maror-modal-content .btn-cancel {
+            background: transparent;
+            color: #e5e7eb;
+            border: 2px solid #6b7280;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .maror-modal-content .btn-cancel:hover {
+            background: rgba(107, 114, 128, 0.2);
+        }
+
         /* Interactive Elements Section */
         .interactive-section {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -875,6 +1037,39 @@
 
             .contact-buttons {
                 flex-direction: column;
+            }
+
+            /* Stack emergency buttons on mobile */
+            .utensil-emergency {
+                bottom: 100px;
+                right: 20px;
+                left: 20px;
+                justify-content: center;
+            }
+
+            .maror-emergency {
+                bottom: 50px;
+                left: 20px;
+                right: 20px;
+                justify-content: center;
+            }
+
+            .maror-modal-content {
+                padding: 25px;
+                margin: 20px;
+            }
+
+            .maror-modal-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .maror-modal-content .buttons {
+                flex-direction: column;
+            }
+
+            .maror-modal-content .btn-confirm,
+            .maror-modal-content .btn-cancel {
+                width: 100%;
             }
         }
     </style>
@@ -1299,6 +1494,37 @@
         🍴 Utensil Fell?
     </div>
 
+    <!-- Emergency Maror Button -->
+    <div class="maror-emergency" onclick="openMarorModal()">
+        🥬 Emergency Maror
+    </div>
+
+    <!-- Maror Modal -->
+    <div class="maror-modal" id="marorModal">
+        <div class="maror-modal-content">
+            <div class="warning-emoji">🚨</div>
+            <h2>Are You Sure?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">This is not a drill.</p>
+            <p>You are about to consume <strong>Maror</strong>. Please review the side effects:</p>
+            <div class="side-effects">
+                <h4>Potential Side Effects:</h4>
+                <ul>
+                    <li>Immediate eye watering</li>
+                    <li>Facial contortions</li>
+                    <li>Sudden regret</li>
+                    <li>Questioning life choices</li>
+                    <li>Temporary loss of taste buds</li>
+                    <li>Uncontrollable facial expressions</li>
+                    <li>Need to immediately eat charoses</li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button class="btn-cancel" onclick="closeMarorModal()">I Changed My Mind</button>
+                <button class="btn-confirm" onclick="confirmMaror()">I Know What I'm Doing</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1447,6 +1673,32 @@
                 btn.innerHTML = '🍴 Utensil Fell?';
             }
         }
+
+        // Emergency Maror Modal
+        function openMarorModal() {
+            document.getElementById('marorModal').classList.add('active');
+        }
+
+        function closeMarorModal() {
+            document.getElementById('marorModal').classList.remove('active');
+        }
+
+        function confirmMaror() {
+            closeMarorModal();
+            // Show a funny confirmation message
+            const marorBtn = document.querySelector('.maror-emergency');
+            marorBtn.innerHTML = '💪 You Brave Soul!';
+            setTimeout(() => {
+                marorBtn.innerHTML = '🥬 Emergency Maror';
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('marorModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMarorModal();
+            }
+        });
     </script>
 </body>
 </html>
