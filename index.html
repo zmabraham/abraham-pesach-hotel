@@ -1073,60 +1073,67 @@
             }
 
             .maror-modal-content {
-                padding: 20px;
+                padding: 15px;
                 margin: 10px;
-                max-height: 80vh;
+                max-height: 70vh;
                 overflow-y: auto;
                 display: flex;
                 flex-direction: column;
             }
 
             .maror-modal-content .warning-emoji {
-                font-size: 2.5rem;
-                margin-bottom: 10px;
+                font-size: 2rem;
+                margin-bottom: 8px;
             }
 
             .maror-modal-content h2 {
-                font-size: 1.3rem;
-                margin-bottom: 15px;
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+                letter-spacing: 2px;
+            }
+
+            .maror-modal-content > p {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
             }
 
             .maror-modal-content .side-effects {
-                padding: 15px;
-                margin: 15px 0;
+                padding: 10px;
+                margin: 10px 0;
                 flex-shrink: 0;
             }
 
             .maror-modal-content .side-effects h4 {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
+                margin-bottom: 8px;
             }
 
             .maror-modal-content .side-effects li {
-                font-size: 0.85rem;
-                padding: 6px 0;
-                padding-left: 22px;
+                font-size: 0.75rem;
+                padding: 4px 0;
+                padding-left: 20px;
             }
 
             .maror-modal-content .side-effects li:before {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
             }
 
             .maror-modal-content .buttons {
                 flex-direction: column;
-                gap: 10px;
-                margin-top: 15px;
+                gap: 8px;
+                margin-top: 10px;
                 flex-shrink: 0;
                 position: sticky;
                 bottom: 0;
                 background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-                padding-top: 10px;
+                padding-top: 8px;
             }
 
             .maror-modal-content .btn-confirm,
             .maror-modal-content .btn-cancel {
                 width: 100%;
-                padding: 12px 20px;
-                font-size: 0.9rem;
+                padding: 10px 16px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1550,18 +1557,15 @@
         <div class="maror-modal-content">
             <div class="warning-emoji">🚨</div>
             <h2>Are You Sure?</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 20px;">This is not a drill.</p>
-            <p>You are about to consume <strong>Maror</strong>. Please review the side effects:</p>
+            <p>This is not a drill.</p>
+            <p>About to eat <strong>Maror</strong>. Side effects:</p>
             <div class="side-effects">
-                <h4>Potential Side Effects:</h4>
+                <h4>⚠️ Warning:</h4>
                 <ul>
-                    <li>Immediate eye watering</li>
-                    <li>Facial contortions</li>
+                    <li>Eye watering & facial contortions</li>
                     <li>Sudden regret</li>
                     <li>Questioning life choices</li>
-                    <li>Temporary loss of taste buds</li>
-                    <li>Uncontrollable facial expressions</li>
-                    <li>Need to immediately eat charoses</li>
+                    <li>Immediate need for charoses</li>
                 </ul>
             </div>
             <div class="buttons">
