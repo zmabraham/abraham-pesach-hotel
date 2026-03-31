@@ -119,14 +119,37 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 70vh;
+            min-height: 85vh;
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding: 80px 20px;
+            padding: 40px 20px;
+        }
+
+        .hero-logo {
+            max-width: 80vh;
+            width: 100%;
+            height: auto;
+            max-height: 55vh;
+            object-fit: contain;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 10px 40px rgba(201, 169, 97, 0.3));
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .hero-content {
@@ -134,24 +157,24 @@
         }
 
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--gold);
             letter-spacing: 2px;
         }
 
         .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
             font-weight: 300;
             opacity: 0.9;
         }
 
         .hero .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+            font-size: 1rem;
+            margin-bottom: 30px;
             opacity: 0.8;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         .cta-button {
@@ -386,12 +409,26 @@
                 justify-content: center;
             }
 
+            .hero {
+                padding: 30px 20px;
+                min-height: 75vh;
+            }
+
+            .hero-logo {
+                max-height: 40vh;
+                margin-bottom: 20px;
+            }
+
             .hero h2 {
                 font-size: 2rem;
             }
 
             .hero .tagline {
                 font-size: 1.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.95rem;
             }
 
             .section {
@@ -432,6 +469,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <img src="assets/hotel-image.png" alt="Abraham Pesach Hotel" class="hero-logo">
         <div class="hero-content">
             <h2>Welcome to Our Family Retreat!</h2>
             <p class="tagline">Five-Star Service. Zero Chametz.</p>
