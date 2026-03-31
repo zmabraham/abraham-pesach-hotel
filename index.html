@@ -343,6 +343,94 @@
             margin-bottom: 20px;
         }
 
+        /* Amenities, WiFi, Complaints Sections */
+        .info-sections {
+            background: var(--white);
+            padding: 60px 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: var(--cream);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wifi-details {
+            background: var(--navy);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .wifi-details .network {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .wifi-details .password {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .amenities-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .amenities-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .amenities-list li:last-child {
+            border-bottom: none;
+        }
+
+        .complaints-box {
+            background: var(--cream);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px dashed var(--gold);
+        }
+
+        .complaints-box p {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .complaints-box small {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-style: italic;
+        }
+
         .contact-buttons {
             display: flex;
             gap: 15px;
@@ -618,6 +706,43 @@
                     <li>Hand-Processed Vegetables</li>
                     <li>Fresh Ingredients Daily</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Sections: WiFi, Amenities, Complaints -->
+    <section class="info-sections">
+        <h2 class="section-title">Hotel Services & Information</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📶 Wi-Fi Access</h3>
+                <p>Stay connected with high-speed Wi-Fi throughout the hotel.</p>
+                <div class="wifi-details">
+                    <div class="network"><strong>Network:</strong> FIOS-3HMNT</div>
+                    <div class="password"><strong>Password:</strong> east54china495nut</div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏨 Hotel Amenities</h3>
+                <ul class="amenities-list">
+                    <li>✓ High-speed Wi-Fi throughout</li>
+                    <li>✓ Climate-controlled rooms</li>
+                    <li>✓ Daily housekeeping</li>
+                    <li>✓ 24/7 front desk</li>
+                    <li>✓ Prayer facilities on site</li>
+                    <li>✓ Elevator access</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>💬 Complaints Department</h3>
+                <p>Is your matzah too crunchy? Pillow not fluffy enough? Let management know.</p>
+                <div class="complaints-box">
+                    <p><strong>We're here to help!</strong></p>
+                    <p>File a formal complaint and our team will address it promptly.</p>
+                    <small>© 5786 Abraham Pesach Hotel. Management reserves the right to assign dish duty to anyone who complains.</small>
+                </div>
             </div>
         </div>
     </section>
