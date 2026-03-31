@@ -1251,11 +1251,15 @@
 
     <!-- Debug: Hidden audio player for testing -->
     <div id="audioTest" style="position:fixed; top:10px; right:10px; z-index:9999; background:white; padding:10px; display:none;">
-        <p style="font-size:12px; margin-bottom:5px;">GitHub hosted:</p>
+        <p style="font-size:12px; margin-bottom:5px;">GitHub Pages:</p>
         <audio controls style="width:200px; margin-bottom:10px;">
             <source src="https://zmabraham.github.io/abraham-pesach-hotel/assets/fridge-song.mp3" type="audio/mpeg">
         </audio>
-        <p style="font-size:12px; margin-bottom:5px;">Direct from Drive:</p>
+        <p style="font-size:12px; margin-bottom:5px;">GitHub Raw:</p>
+        <audio controls style="width:200px; margin-bottom:10px;">
+            <source src="https://raw.githubusercontent.com/zmabraham/abraham-pesach-hotel/main/assets/fridge-song.mp3" type="audio/mpeg">
+        </audio>
+        <p style="font-size:12px; margin-bottom:5px;">Google Drive:</p>
         <audio controls style="width:200px; margin-bottom:10px;">
             <source src="https://drive.google.com/uc?export=download&id=1nZNraUn3u36bGeafEoZPfJd9vHWFN4vB" type="audio/mpeg">
         </audio>
@@ -1401,9 +1405,9 @@
         function playUtensilSong() {
             const btn = document.getElementById('utensilBtn');
 
-            // Create audio on first click with Google Drive URL
+            // Create audio on first click with GitHub raw URL
             if (!utensilAudio) {
-                utensilAudio = new Audio('https://drive.google.com/uc?export=download&id=1nZNraUn3u36bGeafEoZPfJd9vHWFN4vB');
+                utensilAudio = new Audio('https://raw.githubusercontent.com/zmabraham/abraham-pesach-hotel/main/assets/fridge-song.mp3');
                 utensilAudio.onended = function() {
                     btn.classList.remove('playing');
                     btn.innerHTML = '🍴 Utensil Fell?';
