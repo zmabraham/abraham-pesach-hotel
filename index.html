@@ -449,6 +449,36 @@
             color: var(--navy);
         }
 
+        .gallery {
+            background: var(--cream);
+            padding: 80px 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         footer {
             background: var(--navy);
             color: var(--white);
@@ -533,6 +563,10 @@
 
             .contact-buttons {
                 flex-direction: column;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -743,6 +777,20 @@
                     <p>File a formal complaint and our team will address it promptly.</p>
                     <small>© 5786 Abraham Pesach Hotel. Management reserves the right to assign dish duty to anyone who complains.</small>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 40px;">A glimpse of the Abraham Pesach Hotel experience</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/hotel-image.png" alt="Abraham Pesach Hotel">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/hotel-image-2.png" alt="Abraham Pesach Hotel Experience">
             </div>
         </div>
     </section>
