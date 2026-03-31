@@ -1239,33 +1239,6 @@
         🍴 Utensil Fell?
     </div>
 
-    <!-- Test Audio Button (for debugging) -->
-    <div style="position:fixed; top:10px; right:10px; z-index:10000;">
-        <button onclick="document.getElementById('audioTest').style.display='block'" style="padding:5px 10px; font-size:12px;">🔊 Test Audio</button>
-    </div>
-
-    <!-- Audio Element -->
-    <audio id="utensilAudio" preload="auto">
-        <source src="assets/fridge-song.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Debug: Hidden audio player for testing -->
-    <div id="audioTest" style="position:fixed; top:10px; right:10px; z-index:9999; background:white; padding:10px; display:none;">
-        <p style="font-size:12px; margin-bottom:5px;">GitHub Pages:</p>
-        <audio controls style="width:200px; margin-bottom:10px;">
-            <source src="https://zmabraham.github.io/abraham-pesach-hotel/assets/fridge-song.mp3" type="audio/mpeg">
-        </audio>
-        <p style="font-size:12px; margin-bottom:5px;">GitHub Raw:</p>
-        <audio controls style="width:200px; margin-bottom:10px;">
-            <source src="https://raw.githubusercontent.com/zmabraham/abraham-pesach-hotel/main/assets/fridge-song.mp3" type="audio/mpeg">
-        </audio>
-        <p style="font-size:12px; margin-bottom:5px;">Google Drive:</p>
-        <audio controls style="width:200px; margin-bottom:10px;">
-            <source src="https://drive.google.com/uc?export=download&id=1nZNraUn3u36bGeafEoZPfJd9vHWFN4vB" type="audio/mpeg">
-        </audio>
-        <button onclick="document.getElementById('audioTest').style.display='none'">Close</button>
-    </div>
-
     <!-- Maror Warning Modal -->
     <div class="maror-modal" id="marorModal" onclick="closeMarorModal(event)">
         <div class="maror-modal-content" onclick="event.stopPropagation()">
