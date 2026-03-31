@@ -564,6 +564,44 @@
             background: #475569;
         }
 
+        /* Utensil Button */
+        .utensil-emergency {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #8b5cf6;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            border: 2px solid #a78bfa;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .utensil-emergency:hover {
+            transform: scale(1.05);
+            background: #7c3aed;
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .utensil-emergency.playing {
+            background: #059669;
+            border-color: #10b981;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(5, 150, 105, 0.6); }
+        }
+
         /* Interactive Elements Section */
         .interactive-section {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -1196,6 +1234,16 @@
         🚨 EMERGENCY MAROR
     </div>
 
+    <!-- Utensil Emergency Button -->
+    <div class="utensil-emergency" id="utensilBtn" onclick="playUtensilSong()">
+        🍴 Utensil Fell?
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="utensilAudio" preload="auto">
+        <source src="assets/fridge-song.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Maror Warning Modal -->
     <div class="maror-modal" id="marorModal" onclick="closeMarorModal(event)">
         <div class="maror-modal-content" onclick="event.stopPropagation()">
@@ -1327,6 +1375,29 @@
             button.classList.add('active');
             // Update response
             document.getElementById('moodResponse').textContent = moodResponses[mood];
+        }
+
+        // Utensil Song Player
+        function playUtensilSong() {
+            const audio = document.getElementById('utensilAudio');
+            const btn = document.getElementById('utensilBtn');
+
+            if (audio.paused) {
+                audio.currentTime = 0;
+                audio.play();
+                btn.classList.add('playing');
+                btn.innerHTML = '🎶 On Top of the Fridge!';
+
+                audio.onended = function() {
+                    btn.classList.remove('playing');
+                    btn.innerHTML = '🍴 Utensil Fell?';
+                };
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+                btn.classList.remove('playing');
+                btn.innerHTML = '🍴 Utensil Fell?';
+            }
         }
     </script>
 </body>
