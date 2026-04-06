@@ -557,6 +557,30 @@
             font-style: italic;
         }
 
+        .complaint-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);
+        }
+
+        .complaint-button:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .complaint-button:active {
+            transform: translateY(0);
+        }
+
         .contact-buttons {
             display: flex;
             gap: 15px;
@@ -1501,6 +1525,7 @@
                 <div class="complaints-box">
                     <p><strong>We're here to help!</strong></p>
                     <p>File a formal complaint and our team will address it promptly.</p>
+                    <a href="mailto:chanaabraham11@gmail.com?subject=Guest Complaint - Abraham Pesach Hotel&body=Please describe your issue below:%0D%0A%0D%0AName: %0D%0ARoom: %0D%0AComplaint: " class="complaint-button">File Complaint via Email</a>
                     <small>© 5786 Abraham Pesach Hotel. Management reserves the right to assign dish duty to anyone who complains.</small>
                 </div>
             </div>
