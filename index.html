@@ -795,6 +795,22 @@
             box-shadow: 0 8px 35px rgba(201, 169, 97, 0.7);
         }
 
+        .leshana-emergency.playing {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            border-color: #34d399;
+            color: white;
+            animation: playingGlow 1s infinite;
+        }
+
+        @keyframes playingGlow {
+            0%, 100% {
+                box-shadow: 0 8px 35px rgba(16, 185, 129, 0.7);
+            }
+            50% {
+                box-shadow: 0 12px 50px rgba(16, 185, 129, 1);
+            }
+        }
+
         @keyframes leshanaPulse {
             0%, 100% {
                 box-shadow: 0 6px 25px rgba(201, 169, 97, 0.5);
@@ -1875,75 +1891,47 @@
         }
 
         // Leshana Haba'ah B'Yerushalayim Song Player
-        let leshanaModal = null;
+        let leshanaAudio = null;
 
         function playLeshanaSong() {
-            // Create modal if it doesn't exist
-            if (!leshanaModal) {
-                const modal = document.createElement('div');
-                modal.id = 'leshanaModal';
-                modal.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.9);
-                    z-index: 10000;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                `;
+            const btn = document.querySelector('.leshana-emergency');
 
-                const iframeContainer = document.createElement('div');
-                iframeContainer.style.cssText = `
-                    width: 90%;
-                    max-width: 600px;
-                    height: 400px;
-                    background: white;
-                    border-radius: 20px;
-                    overflow: hidden;
-                    box-shadow: 0 20px 60px rgba(201, 169, 97, 0.5);
-                `;
-
-                const closeBtn = document.createElement('button');
-                closeBtn.innerHTML = '✕ Close';
-                closeBtn.style.cssText = `
-                    margin-top: 20px;
-                    padding: 15px 40px;
-                    font-size: 1.2rem;
-                    background: linear-gradient(135deg, #c9a961 0%, #e5d4a5 100%);
-                    color: #1e293b;
-                    border: none;
-                    border-radius: 50px;
-                    cursor: pointer;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                `;
-                closeBtn.onmouseover = () => closeBtn.style.transform = 'scale(1.05)';
-                closeBtn.onmouseout = () => closeBtn.style.transform = 'scale(1)';
-                closeBtn.onclick = closeLeshanaModal;
-
-                modal.appendChild(iframeContainer);
-                modal.appendChild(closeBtn);
-                document.body.appendChild(modal);
-
-                // Create iframe for Suno song
-                const iframe = document.createElement('iframe');
-                iframe.style.cssText = 'width: 100%; height: 100%; border: none;';
-                iframe.src = 'https://suno.com/s/FNgbaLi3tl11Uu8j?embed=true';
-                iframeContainer.appendChild(iframe);
-
-                leshanaModal = modal;
+            // Create audio on first click with Google Drive direct link
+            if (!leshanaAudio) {
+                leshanaAudio = new Audio('https://drive.google.com/uc?export=download&id=1aNCJxb9HgFdd22UhuBHMI-KLQSnvvKhY');
+                leshanaAudio.crossOrigin = "anonymous";
+                leshanaAudio.preload = "auto";
+                leshanaAudio.onended = function() {
+                    btn.classList.remove('playing');
+                    btn.innerHTML = '🎵 לשנה הבאה!';
+                };
+                leshanaAudio.onerror = function() {
+                    console.error('Audio load error');
+                    btn.innerHTML = '❌ Error';
+                    setTimeout(() => {
+                        btn.innerHTML = '🎵 לשנה הבאה!';
+                    }, 2000);
+                };
             }
 
-            leshanaModal.style.display = 'flex';
-        }
-
-        function closeLeshanaModal() {
-            if (leshanaModal) {
-                leshanaModal.style.display = 'none';
+            // Toggle play/pause
+            if (leshanaAudio.paused) {
+                leshanaAudio.currentTime = 0;
+                leshanaAudio.play().then(() => {
+                    btn.classList.add('playing');
+                    btn.innerHTML = '🎶 לשנה הבאה בירושלים! 🎵';
+                }).catch(error => {
+                    console.error('Playback failed:', error);
+                    btn.innerHTML = '❌ Error';
+                    setTimeout(() => {
+                        btn.innerHTML = '🎵 לשנה הבאה!';
+                    }, 2000);
+                });
+            } else {
+                leshanaAudio.pause();
+                leshanaAudio.currentTime = 0;
+                btn.classList.remove('playing');
+                btn.innerHTML = '🎵 לשנה הבאה!';
             }
         }
 
