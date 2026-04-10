@@ -1896,9 +1896,9 @@
         function playLeshanaSong() {
             const btn = document.querySelector('.leshana-emergency');
 
-            // Create audio on first click with Google Drive direct link
+            // Create audio on first click with local file
             if (!leshanaAudio) {
-                leshanaAudio = new Audio('https://drive.google.com/uc?export=download&id=1aNCJxb9HgFdd22UhuBHMI-KLQSnvvKhY');
+                leshanaAudio = new Audio('./assets/leshana-habaah.mp3');
                 leshanaAudio.crossOrigin = "anonymous";
                 leshanaAudio.preload = "auto";
                 leshanaAudio.onended = function() {
