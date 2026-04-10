@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abraham Pesach Hotel 5786 | Pesach, Take Two</title>
-    <meta name="description" content="Welcome to Abraham Pesach Hotel 5786. Pesach, take two. Your family Pesach retreat in Brooklyn.">
+    <title>Thank You! | Abraham Pesach Hotel 5786</title>
+    <meta name="description" content="Thank you for joining Abraham Pesach Hotel 5786! Leshana Haba'ah B'Yerushalayim! Share your feedback and memories.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -281,6 +281,37 @@
             color: var(--navy);
         }
 
+        .leshana-btn {
+            background: linear-gradient(135deg, #c9a961 0%, #e5d4a5 100%);
+            color: var(--navy);
+            border: 3px solid var(--gold);
+            font-size: 1.2rem;
+            padding: 20px 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .leshana-btn:hover {
+            background: linear-gradient(135deg, #e5d4a5 0%, #c9a961 100%);
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(201, 169, 97, 0.5);
+        }
+
+        .leshana-btn.playing {
+            animation: glow 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(201, 169, 97, 0.3); }
+            50% { box-shadow: 0 4px 40px rgba(201, 169, 97, 0.6); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(201, 169, 97, 0.8); }
+            50% { box-shadow: 0 0 40px rgba(201, 169, 97, 1); }
+        }
+
         /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
@@ -367,6 +398,71 @@
 
         .feature-card p {
             color: #64748b;
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feedback-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(201, 169, 97, 0.2);
+        }
+
+        .feedback-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .feedback-button:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 97, 0.4);
+        }
+
+        .rating-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .rating-btn {
+            display: block;
+            background: var(--navy-light);
+            color: var(--gold);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .rating-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateX(5px);
         }
 
         .schedule {
@@ -1184,16 +1280,20 @@
     <section class="hero">
         <img src="assets/hotel-image.png" alt="Abraham Pesach Hotel" class="hero-logo">
         <div class="hero-content">
-            <h2>Abraham Pesach Hotel</h2>
+            <h2 style="font-size: 4rem; margin-bottom: 20px;">Thank You! 🙏</h2>
             <div class="hero-divider"></div>
-            <p class="tagline">Pesach, Take Two</p>
-            <p class="subtitle">
-                An unforgettable family retreat in the heart of Brooklyn.
-                Experience five-star service, gourmet cuisine, and warm hospitality
-                for Pesach 5786.
+            <p class="tagline" style="font-size: 2.5rem;">For Joining Us For Pesach 5786</p>
+            <p class="subtitle" style="font-size: 1.4rem; margin-top: 20px;">
+                What an incredible Pesach it was! We hope you made beautiful memories,
+                enjoyed delicious food, and felt at home with our family.
+            </p>
+            <p class="subtitle" style="font-size: 1.6rem; margin-top: 30px; color: var(--gold);">
+                לשנה הבאה בירושלים!
             </p>
             <div class="hero-cta">
-                <a href="#schedule" class="cta-button">View Schedule</a>
+                <button class="cta-button leshana-btn" onclick="playLeshanaSong()">
+                    🎵 Play Leshana Haba'ah B'Yerushalayim
+                </button>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -1203,38 +1303,47 @@
     </section>
 
     <section class="section">
-        <h2 class="section-title">Why Choose Abraham Pesach Hotel?</h2>
+        <h2 class="section-title">Share Your Experience! 💬</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 40px; font-size: 1.2rem;">
+            Your feedback helps us improve for next year! What did you love? What can we do better?
+        </p>
 
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">🕍</div>
-                <h3>Kosher L'Pesach</h3>
-                <p>Zero chametz throughout. Full hashgacha and attention to every detail.</p>
+        <div class="feedback-section">
+            <div class="feedback-card">
+                <h3 style="color: var(--gold); margin-bottom: 20px;">📝 Leave Your Feedback</h3>
+                <p style="margin-bottom: 25px;">
+                    Tell us about your stay - the food, the programming, the rooms, the kids' activities...
+                </p>
+                <a href="mailto:chanaabraham11@gmail.com?subject=Pesach 5786 Feedback - Abraham Pesach Hotel&body=Hi!%0D%0A%0D%0AI wanted to share my feedback about Pesach 5786:%0D%0A%0D%0AWhat I loved:%0D%0A%0D%0ASuggestions for improvement:%0D%0A%0D%0ANext year interest (1-10):%0D%0A%0D%0AThank you!%0D%0A"
+                   class="feedback-button">
+                    Send Feedback via Email ✉️
+                </a>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">👨‍👩‍👧‍👦</div>
-                <h3>Family Atmosphere</h3>
-                <p>Warm, welcoming environment designed for families of all sizes.</p>
+
+            <div class="feedback-card">
+                <h3 style="color: var(--gold); margin-bottom: 20px;">⭐ Rate Your Experience</h3>
+                <p style="margin-bottom: 25px;">
+                    How was everything? Your honest review helps us grow!
+                </p>
+                <div class="rating-options">
+                    <a href="mailto:chanaabraham11@gmail.com?subject=5 Stars - Amazing Pesach!&body=I had an amazing Pesach! 5 stars!"
+                       class="rating-btn">⭐⭐⭐⭐⭐ Excellent!</a>
+                    <a href="mailto:chanaabraham11@gmail.com?subject=4 Stars - Great Pesach&body=Great Pesach overall! Here's what would make it 5 stars:"
+                       class="rating-btn">⭐⭐⭐⭐ Very Good</a>
+                    <a href="mailto:chanaabraham11@gmail.com?subject=3 Stars - Good Pesach&body=Good Pesach. Here's my feedback:"
+                       class="rating-btn">⭐⭐⭐ Good</a>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⭐</div>
-                <h3>Five-Star Service</h3>
-                <p>Professional concierge and management team at your service.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📍</div>
-                <h3>Brooklyn, NY</h3>
-                <p>Convenient location in the heart of Brooklyn's Jewish community.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🍽️</div>
-                <h3>Gourmet Dining</h3>
-                <p>Exquisite menus prepared by top culinary teams.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📖</div>
-                <h3>Halachic Guide</h3>
-                <p>Day-by-day halachic guide and zmanim available.</p>
+
+            <div class="feedback-card">
+                <h3 style="color: var(--gold); margin-bottom: 20px;">📸 Share Your Photos</h3>
+                <p style="margin-bottom: 25px;">
+                    Did you capture special moments? We'd love to see them!
+                </p>
+                <a href="mailto:chanaabraham11@gmail.com?subject=My Pesach Photos&body=Hi! I'd like to share my photos from Pesach 5786."
+                   class="feedback-button">
+                    Share Photos 📷
+                </a>
             </div>
         </div>
     </section>
@@ -1746,6 +1855,52 @@
                 utensilAudio.currentTime = 0;
                 btn.classList.remove('playing');
                 btn.innerHTML = '🍴 Utensil Fell?';
+            }
+        }
+
+        // Leshana Haba'ah B'Yerushalayim Song Player
+        let leshanaAudio = null;
+
+        function playLeshanaSong() {
+            const btn = document.querySelector('.leshana-btn');
+
+            // Create audio on first click
+            if (!leshanaAudio) {
+                // Using a popular Leshana Haba'ah B'Yerushalayim song
+                leshanaAudio = new Audio('https://www.sefaria.org/sheets/Osher_Leshana_Habaah_Beyrushalayim.mp3');
+                leshanaAudio.crossOrigin = "anonymous";
+                leshanaAudio.preload = "auto";
+                leshanaAudio.onended = function() {
+                    btn.classList.remove('playing');
+                    btn.innerHTML = '🎵 Play Leshana Haba\'ah B\'Yerushalayim';
+                };
+                leshanaAudio.onerror = function() {
+                    console.error('Audio load error');
+                    btn.innerHTML = '❌ Load Error - Try Again';
+                    setTimeout(() => {
+                        btn.innerHTML = '🎵 Play Leshana Haba\'ah B\'Yerushalayim';
+                    }, 2000);
+                };
+            }
+
+            // Toggle play/pause
+            if (leshanaAudio.paused) {
+                leshanaAudio.currentTime = 0;
+                leshanaAudio.play().then(() => {
+                    btn.classList.add('playing');
+                    btn.innerHTML = '🎶 Playing: Leshana Haba\'ah B\'Yerushalayim! 🎵';
+                }).catch(error => {
+                    console.error('Playback failed:', error);
+                    btn.innerHTML = '❌ Error: ' + error.name;
+                    setTimeout(() => {
+                        btn.innerHTML = '🎵 Play Leshana Haba\'ah B\'Yerushalayim';
+                    }, 2000);
+                });
+            } else {
+                leshanaAudio.pause();
+                leshanaAudio.currentTime = 0;
+                btn.classList.remove('playing');
+                btn.innerHTML = '🎵 Play Leshana Haba\'ah B\'Yerushalayim';
             }
         }
 
