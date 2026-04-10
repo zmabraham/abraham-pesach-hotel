@@ -1896,21 +1896,34 @@
         function playLeshanaSong() {
             const btn = document.querySelector('.leshana-emergency');
 
-            // Create audio on first click with local file
+            // Create audio on first click with local file (add cache buster)
             if (!leshanaAudio) {
-                leshanaAudio = new Audio('./assets/leshana-habaah.mp3');
+                leshanaAudio = new Audio('./assets/leshana-habaah.mp3?v=2');
                 leshanaAudio.crossOrigin = "anonymous";
                 leshanaAudio.preload = "auto";
                 leshanaAudio.onended = function() {
                     btn.classList.remove('playing');
                     btn.innerHTML = '🎵 לשנה הבאה!';
                 };
-                leshanaAudio.onerror = function() {
-                    console.error('Audio load error');
-                    btn.innerHTML = '❌ Error';
+                leshanaAudio.onerror = function(e) {
+                    console.error('Audio load error:', e);
+                    console.error('Network state:', navigator.onLine);
+                    console.error('Audio src:', leshanaAudio.src);
+                    btn.innerHTML = '❌ Loading...';
+                    // Retry once after a short delay
                     setTimeout(() => {
-                        btn.innerHTML = '🎵 לשנה הבאה!';
-                    }, 2000);
+                        leshanaAudio.load();
+                        leshanaAudio.play().then(() => {
+                            btn.classList.add('playing');
+                            btn.innerHTML = '🎶 לשנה הבאה בירושלים! 🎵';
+                        }).catch(err => {
+                            btn.innerHTML = '❌ Error';
+                            console.error('Retry failed:', err);
+                            setTimeout(() => {
+                                btn.innerHTML = '🎵 לשנה הבאה!';
+                            }, 2000);
+                        });
+                    }, 500);
                 };
             }
 
@@ -1922,7 +1935,7 @@
                     btn.innerHTML = '🎶 לשנה הבאה בירושלים! 🎵';
                 }).catch(error => {
                     console.error('Playback failed:', error);
-                    btn.innerHTML = '❌ Error';
+                    btn.innerHTML = '❌ ' + error.name;
                     setTimeout(() => {
                         btn.innerHTML = '🎵 לשנה הבאה!';
                     }, 2000);
